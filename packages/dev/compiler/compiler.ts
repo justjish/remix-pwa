@@ -27,7 +27,7 @@ function createEsbuildConfig(config: ResolvedWorkerConfig): BuildOptions {
     },
     outdir: config.workerBuildDirectory,
     platform: 'browser',
-    format: 'cjs',
+    format: 'esm',
     bundle: true,
     logLevel: 'error',
     splitting: true,
