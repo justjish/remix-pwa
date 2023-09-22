@@ -11,20 +11,20 @@ import {
 } from "@remix-run/react";
 
 import stylesheet from './tailwind.css';
-import { useEffect } from "react";
+import { useOneSignal } from "./hooks/one-signal";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: stylesheet },
 ];
 
+
 export default function App() {
   useSWEffect();
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // ...
-    }
+  useOneSignal({
+    appId: '53edc69c-e37b-4916-aa16-a3c663669843',
+    allowLocalhostAsSecureOrigin: true,
+    serviceWorkerPath: '/OneSignalSDKWorker.js'
   })
 
   return (

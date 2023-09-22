@@ -17,3 +17,7 @@ startTransition(() => {
 });
 
 loadServiceWorker();
+loadServiceWorker({
+  scope: '/onesignal',
+  serviceWorkerUrl: '/OneSignalSDKWorker.js'
+})

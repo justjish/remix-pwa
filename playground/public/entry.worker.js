@@ -1,3 +1,4 @@
+"use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -34,36 +35,36 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 
 // empty-module:@remix-run/react
 var require_react = __commonJS({
-  "empty-module:@remix-run/react"(exports, module) {
-    module.exports = {};
+  "empty-module:@remix-run/react"(exports, module2) {
+    module2.exports = {};
   }
 });
 
 // empty-module:react
 var require_react2 = __commonJS({
-  "empty-module:react"(exports, module) {
-    module.exports = {};
+  "empty-module:react"(exports, module2) {
+    module2.exports = {};
   }
 });
 
 // routes-module:root.tsx?worker
 var require_root = __commonJS({
-  "routes-module:root.tsx?worker"(exports, module) {
-    module.exports = {};
+  "routes-module:root.tsx?worker"(exports, module2) {
+    module2.exports = {};
   }
 });
 
 // empty-module:@remix-run/node
 var require_node = __commonJS({
-  "empty-module:@remix-run/node"(exports, module) {
-    module.exports = {};
+  "empty-module:@remix-run/node"(exports, module2) {
+    module2.exports = {};
   }
 });
 
 // empty-module:react/jsx-runtime
 var require_jsx_runtime = __commonJS({
-  "empty-module:react/jsx-runtime"(exports, module) {
-    module.exports = {};
+  "empty-module:react/jsx-runtime"(exports, module2) {
+    module2.exports = {};
   }
 });
 
@@ -3409,8 +3410,8 @@ var init_router = __esm({
 
 // routes-module:routes/_index.tsx?worker
 var require_index = __commonJS({
-  "routes-module:routes/_index.tsx?worker"(exports, module) {
-    module.exports = {};
+  "routes-module:routes/_index.tsx?worker"(exports, module2) {
+    module2.exports = {};
   }
 });
 
@@ -10312,7 +10313,7 @@ var hasWorkerAction8 = false;
 var hasWorkerLoader8 = true;
 
 // assets-module:@remix-sas/dev?assets
-var assets = ["/build/root-OK67BZL6.js", "/build/manifest-10FBC21A.js", "/build/entry.client-2V2MPQUQ.js", "/build/__remix_entry_dev-CBVCFEV6.js", "/build/routes/sync-away-NASUWENV.js", "/build/routes/strategies-VIJ22HC6.js", "/build/routes/selection-ZB7OSTRA.js", "/build/routes/basic-loader-Z5VZLM5B.js", "/build/routes/basic-caching-Y4GN322I.js", "/build/routes/basic-action-MFOBLML3.js", "/build/routes/_index-XFWLNEGN.js", "/build/routes/_app.flights-KDZQ5DKH.js", "/build/routes/_app-2NDWGNRD.js", "/build/_shared/runtime-JC7ERE5X.js", "/build/_shared/remix_hmr-KOXB6O7Z.js", "/build/_shared/react-dom-SNQ2UIZM.js", "/build/_shared/react-XL6EHOTX.js", "/build/_shared/jsx-runtime-7KJOCM5J.js", "/build/_shared/jsx-dev-runtime-D5NCTVC4.js", "/build/_shared/esm-IBLMKEZI.js", "/build/_shared/client-LQHWDDYA.js", "/build/_shared/chunk-TWSZTAQ6.js", "/build/_shared/chunk-TLBAXOHZ.js", "/build/_shared/chunk-STMUDJCL.js", "/build/_shared/chunk-PNG5AS42.js", "/build/_shared/chunk-OLI5EMZU.js", "/build/_shared/chunk-NXSRMYPB.js", "/build/_shared/chunk-LOYKRDJM.js", "/build/_shared/chunk-JT6CP2MP.js", "/build/_shared/chunk-IWDL3EBP.js", "/build/_shared/chunk-G7CHZRZX.js", "/build/_shared/chunk-FXD4XYGV.js", "/build/_assets/tailwind-JOKRYXHU.css"];
+var assets = ["/build/root-543MW7ZN.js", "/build/manifest-23A46B4D.js", "/build/entry.client-D6AMBI5R.js", "/build/__remix_entry_dev-CA7NHVXA.js", "/build/routes/sync-away-YQ66KFA3.js", "/build/routes/strategies-QNKGDPYD.js", "/build/routes/selection-34EZHVGV.js", "/build/routes/onesignal-TVYN6OT7.js", "/build/routes/basic-loader-32EULVJK.js", "/build/routes/basic-caching-CYXYAYM4.js", "/build/routes/basic-action-K77B4HZS.js", "/build/routes/_index-4BXKSHG4.js", "/build/routes/_app.flights-CPMEM4A4.js", "/build/routes/_app-IAWFEKGY.js", "/build/_assets/tailwind-JOKRYXHU.css", "/build/_shared/runtime-JC7ERE5X.js", "/build/_shared/remix_hmr-KOXB6O7Z.js", "/build/_shared/react-dom-SNQ2UIZM.js", "/build/_shared/react-XL6EHOTX.js", "/build/_shared/jsx-runtime-7KJOCM5J.js", "/build/_shared/jsx-dev-runtime-D5NCTVC4.js", "/build/_shared/esm-IBLMKEZI.js", "/build/_shared/client-LQHWDDYA.js", "/build/_shared/chunk-TWSZTAQ6.js", "/build/_shared/chunk-TLBAXOHZ.js", "/build/_shared/chunk-STMUDJCL.js", "/build/_shared/chunk-PNG5AS42.js", "/build/_shared/chunk-OLI5EMZU.js", "/build/_shared/chunk-NXSRMYPB.js", "/build/_shared/chunk-LOYKRDJM.js", "/build/_shared/chunk-JT6CP2MP.js", "/build/_shared/chunk-IWDL3EBP.js", "/build/_shared/chunk-G7CHZRZX.js", "/build/_shared/chunk-FXD4XYGV.js"];
 
 // entry-module:@remix-pwa/build/magic
 var routes = {
