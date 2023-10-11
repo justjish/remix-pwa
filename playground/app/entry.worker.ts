@@ -85,4 +85,3 @@ self.addEventListener('activate', event => {
 self.addEventListener('message', event => {
   event.waitUntil(handler.handle(event));
 });
-

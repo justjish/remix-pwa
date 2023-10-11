@@ -1,6 +1,8 @@
 import type { UIMatch } from '@remix-run/react';
-import { useLocation, useMatches } from '@remix-run/react';
-import { useEffect, useRef } from 'react';
+import { useLocation, useMatches, useRevalidator } from '@remix-run/react';
+import { useEffect, useRef, useState } from 'react';
+
+import { logger } from '../../index.js';
 
 /**
  * This hook is used to send navigation events to the service worker.
@@ -9,6 +11,8 @@ import { useEffect, useRef } from 'react';
 export function useSWEffect(): void {
   const location = useLocation();
   const matches = useMatches();
+  const revalidator = useRevalidator();
+  const [hydrated, setHydrated] = useState(false);
   const isMount = useRef(true);
 
   function isPromise(p: any): boolean {
@@ -24,6 +28,33 @@ export function useSWEffect(): void {
     }
     return false;
   }
+
+  useEffect(() => {
+    const messageChannel = new MessageChannel();
+
+    // First we initialize the channel by sending
+    // the port to the Service Worker (this also
+    // transfers the ownership of the port)
+    navigator.serviceWorker.controller?.postMessage(
+      {
+        type: 'INIT_PORT',
+      },
+      [messageChannel.port2]
+    );
+
+    // Listen to the response
+    messageChannel.port1.onmessage = () => {
+      if (!hydrated) {
+        revalidator.revalidate();
+        logger.info('Hydrating Worker...');
+        setHydrated(true);
+      }
+    };
+
+    return () => {
+      messageChannel.port1.close();
+    };
+  }, [revalidator]);
 
   useEffect(() => {
     const mounted = isMount;

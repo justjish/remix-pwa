@@ -48,6 +48,14 @@ _self.__workerManifest = {
   routes: build.routes,
 };
 
+_self.addEventListener('message', event => {
+  if (event.data.type === 'INIT_PORT') {
+    event.ports[0].postMessage({
+      type: 'REVALIDATE',
+    });
+  }
+});
+
 // DO NOT OVERRIDE!!!
 _self.addEventListener(
   'fetch',

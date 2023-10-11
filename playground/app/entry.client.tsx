@@ -9,11 +9,16 @@ import { RemixBrowser } from "@remix-run/react";
 import { startTransition } from "react";
 import { hydrateRoot } from "react-dom/client";
 
+loadServiceWorker();
+
 startTransition(() => {
+  console.log("hydrating client", navigator.serviceWorker.controller);
+  navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage({
+    type: 'DOCUMENT_REQUEST',
+  })
+
   hydrateRoot(
     document,
     <RemixBrowser />
   );
 });
-
-loadServiceWorker();

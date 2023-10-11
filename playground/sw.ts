@@ -2,7 +2,7 @@
 //@ts-nocheck
 
 (async () => {
-  const run = (await import('../packages/dev/dist/index.js')).run;
+  const run = (await import('@remix-pwa/dev')).run;
 
   await run();
 })();
