@@ -38,6 +38,7 @@ export function useSWEffect(): void {
     navigator.serviceWorker.controller?.postMessage(
       {
         type: 'INIT_PORT',
+        location,
       },
       [messageChannel.port2]
     );
