@@ -57,7 +57,10 @@ export default function entryModulePlugin(config: ResolvedWorkerConfig): Plugin 
       ${createRouteManifest(config.routes)}
     };
 
-    export { assets } from '@remix-pwa/dev?assets';
+    import { assets } from '@remix-pwa/dev?assets';
+
+    console.log('entry', assets, entryWorker)
+    export {assets};
     export const entry = { module: entryWorker };
     `;
 

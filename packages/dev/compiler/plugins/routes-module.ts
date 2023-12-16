@@ -15,6 +15,7 @@ export default function routesModulesPlugin(config: ResolvedWorkerConfig): Plugi
   async function setup(build: PluginBuild) {
     const onResolve = ({ path }: OnResolveArgs) => ({ path, namespace: NAMESPACE });
     const onLoad = async ({ path }: OnLoadArgs) => {
+      console.log('routes-module', path);
       const file = path.replace(FILTER_REGEX, '');
       const route = routesByFile.get(file);
       const sourceExports = await getRouteModuleExports(config, route.id);
