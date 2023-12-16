@@ -1,6 +1,6 @@
 {
   "name": "@remix-pwa/dev",
-  "version": "2.0.30-dev.3",
+  "version": "2.0.31",
   "description": "An esbuild compiler for Service Workers in Remix.run",
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
     "build": "rimraf ./dist && tsc && npm run copy",
     "prepublishOnly": "npm run build",
     "compile": "tsc && node ./build.cjs",
-    "copy": "cp -r cli/templates dist/cli/templates",
+    "copy": "cpy cli/templates dist",
     "format": "prettier --write \"cli/**/*.ts\" \"compiler/**/*.ts\"",
     "lint": "TIMING=1 eslint --fix cli/ compiler/",
     "prepublish": "npm run build",
@@ -32,7 +32,7 @@
     "CHANGELOG.md"
   ],
   "peerDependencies": {
-    "@remix-pwa/worker-runtime": "^2.0.7-dev.3",
+    "@remix-pwa/worker-runtime": "^2.0.8",
     "@remix-run/dev": "^1.15.0 || ^2.0.0"
   },
   "peerDependenciesMeta": {
@@ -54,11 +54,12 @@
     "stdin-discarder": "^0.1.0"
   },
   "devDependencies": {
+    "@remix-run/dev": "^2.0.1",
+    "@remix-pwa/worker-runtime": "^2.0.8",
     "@remix-pwa/eslint-config": "^0.0.0",
     "@remix-pwa/lint-staged-config": "^0.0.0",
-    "@remix-pwa/worker-runtime": "^2.0.7-dev.3",
-    "@remix-run/dev": "^2.0.1",
     "@types/fs-extra": "^11.0.2",
+    "cpy-cli": "^5.0.0",
     "cross-env": "^7.0.3",
     "rimraf": "^5.0.5"
   }
