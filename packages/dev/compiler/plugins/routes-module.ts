@@ -27,6 +27,7 @@ export default function routesModulesPlugin(config: ResolvedWorkerConfig): Plugi
       if (hasWorkerExports(theExports)) {
         const spec = `{ ${theExports.join(', ')} }`;
         contents = `export ${spec} from ${JSON.stringify(`./${file}`)};`;
+        console.log('routes-module', file, contents);
       }
       return {
         contents,
