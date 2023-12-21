@@ -10348,7 +10348,7 @@ async function workerLoader5({ context }) {
 }
 
 // assets-module:@remix-pwa/dev?assets
-var assets = [];
+var assets = ["/build/__remix_entry_dev-TBXRWKIG.js", "/build/root-DLCZOFO6.js", "/build/manifest-1A8A7F95.js", "/build/entry.client-6QZVCPNY.js", "/build/_shared\\runtime-JC7ERE5X.js", "/build/_shared\\remix_hmr-HPERLTMY.js", "/build/_shared\\react-XL6EHOTX.js", "/build/_shared\\react-dom-SNQ2UIZM.js", "/build/_shared\\jsx-runtime-7KJOCM5J.js", "/build/_shared\\jsx-dev-runtime-D5NCTVC4.js", "/build/_shared\\esm-QZSFIL66.js", "/build/_shared\\client-LQHWDDYA.js", "/build/_shared\\chunk-XZBF2QYE.js", "/build/_shared\\chunk-WCMF5GUS.js", "/build/_shared\\chunk-TWSZTAQ6.js", "/build/_shared\\chunk-TLBAXOHZ.js", "/build/_shared\\chunk-STMUDJCL.js", "/build/_shared\\chunk-PNG5AS42.js", "/build/_shared\\chunk-LOYKRDJM.js", "/build/_shared\\chunk-G7CHZRZX.js", "/build/_shared\\chunk-FXD4XYGV.js", "/build/_shared\\chunk-D2DQGHEF.js", "/build/_shared\\chunk-AX2YVUTD.js", "/build/_assets\\tailwind-CRDLME5W.css", "/build/routes\\_index-NOM7ME4F.js", "/build/routes\\_app.flights-QW6WQE7R.js", "/build/routes\\_app-YLNYJZ4P.js", "/build/routes\\sync-away-6GIZ624S.js", "/build/routes\\strategies-72NJF5TL.js", "/build/routes\\selection-5VHAO7BR.js", "/build/routes\\basic-loader-KTVW5J4M.js", "/build/routes\\basic-caching-TFGYKLHO.js", "/build/routes\\basic-action-VP2IRJQW.js"];
 
 // entry-module:@remix-pwa/build/magic
 var routes = {

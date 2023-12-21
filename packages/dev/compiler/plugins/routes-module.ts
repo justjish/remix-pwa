@@ -17,9 +17,9 @@ export default function routesModulesPlugin(config: ResolvedWorkerConfig): Plugi
   async function setup(build: PluginBuild) {
     const onResolve = ({ path }: OnResolveArgs) => ({ path, namespace: NAMESPACE });
     const onLoad = async ({ path }: OnLoadArgs) => {
-      console.log('routes-module', path);
       const file = path.replace(FILTER_REGEX, '');
       const route = routesByFile.get(file);
+      console.log('routes-module', '\npath:', path, '\nfile:', file, '\nroute:', route);
       const sourceExports = await getRouteModuleExports(config, route.id);
       const theExports = sourceExports.filter(
         exp => exp === 'workerAction' || exp === 'workerLoader' || exp === 'handle'
@@ -29,7 +29,7 @@ export default function routesModulesPlugin(config: ResolvedWorkerConfig): Plugi
       await init;
 
       // const [imports, exports] = parse(source);
-      console.log('routes-module:', path, source);
+      // console.log('routes-module:', path, source);
 
       let contents = 'module.exports = {};';
       if (hasWorkerExports(theExports)) {
