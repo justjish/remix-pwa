@@ -1,5 +1,7 @@
 import { getRouteModuleExports } from '@remix-run/dev/dist/compiler/utils/routeExports.js';
+import { init, parse } from 'es-module-lexer';
 import type { OnLoadArgs, OnLoadResult, OnResolveArgs, Plugin, PluginBuild } from 'esbuild';
+import { readFileSync } from 'fs';
 
 import type { ResolvedWorkerConfig } from '../utils/config.js';
 const FILTER_REGEX = /\?worker$/;
@@ -22,6 +24,12 @@ export default function routesModulesPlugin(config: ResolvedWorkerConfig): Plugi
       const theExports = sourceExports.filter(
         exp => exp === 'workerAction' || exp === 'workerLoader' || exp === 'handle'
       );
+
+      const source = readFileSync(`${config.appDirectory}/${file}`, { encoding: 'utf-8' });
+      await init;
+
+      // const [imports, exports] = parse(source);
+      console.log('routes-module:', path, source);
 
       let contents = 'module.exports = {};';
       if (hasWorkerExports(theExports)) {
