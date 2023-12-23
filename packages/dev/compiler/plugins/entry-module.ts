@@ -48,6 +48,7 @@ export default function entryModulePlugin(config: ResolvedWorkerConfig): Plugin 
     const onResolve = ({ path }: OnResolveArgs) => ({ path, namespace: NAMESPACE });
     const onLoad = () => {
       const routes = Object.values(config.routes);
+      console.log('entry-module', JSON.stringify(config.entryWorkerFile))
       const contents = `
       import * as entryWorker from ${JSON.stringify(config.entryWorkerFile)};
 

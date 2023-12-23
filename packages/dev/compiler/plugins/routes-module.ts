@@ -19,7 +19,7 @@ export default function routesModulesPlugin(config: ResolvedWorkerConfig): Plugi
     const onLoad = async ({ path }: OnLoadArgs) => {
       const file = path.replace(FILTER_REGEX, '');
       const route = routesByFile.get(file);
-      console.log('routes-module', '\npath:', path, '\nfile:', file, '\nroute:', route);
+      // console.log('routes-module', '\npath:', path, '\nfile:', file, '\nroute:', route);
       const sourceExports = await getRouteModuleExports(config, route.id);
       const theExports = sourceExports.filter(
         exp => exp === 'workerAction' || exp === 'workerLoader' || exp === 'handle'
