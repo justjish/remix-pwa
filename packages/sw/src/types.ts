@@ -103,15 +103,3 @@ export type DefaultErrorHandler = (error: Error, args: WorkerActionFunctionArgs 
  * `context` object for worker actions and loaders.
  */
 export type GetLoadContextFunction = (event: FetchEvent) => WorkerLoadContext;
-
-/**
- * Unfornately declaring this reaking havoc on the codebase I am working on.
- * I could be 
-// declare global {
-//   interface ServiceWorkerGlobalScope {
-//     __workerManifest: {
-//       routes: WorkerRouteManifest;
-//       assets: string[];
-//     };
-//   }
-// }
