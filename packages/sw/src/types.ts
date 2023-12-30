@@ -1,5 +1,12 @@
 /// <reference lib="WebWorker" />
-import type { ActionFunction, AppLoadContext, DataFunctionArgs, LoaderFunction } from '@remix-run/server-runtime';
+import type {
+  ActionFunction,
+  ActionFunctionArgs,
+  AppLoadContext,
+  DataFunctionArgs,
+  LoaderFunction,
+  LoaderFunctionArgs,
+} from '@remix-run/server-runtime';
 import type { ServerRouteModule } from '@remix-run/server-runtime/dist/routeModules.js';
 import type { ServerRoute } from '@remix-run/server-runtime/dist/routes.js';
 
@@ -11,12 +18,22 @@ export interface WorkerLoadContext extends AppLoadContext {
   event: FetchEvent;
   fetchFromServer: () => Promise<Response>;
 }
+/**
+ * The arguments passed to a worker loader function.
+ */
+export type WorkerLoaderFunctionArgs = Omit<LoaderFunctionArgs, 'context'> & { context: WorkerLoadContext };
+
+/**
+ * The arguments passed to a worker loader function.
+ */
+export type WorkerActionFunctionArgs = Omit<ActionFunctionArgs, 'context'> & { context: WorkerLoadContext };
 
 /**
  * The arguments passed to a worker data function. Could be a worker action or
  * loader. The `context` property is provided by the worker's `getLoadContext`
  * function. Alternatively, use the `WorkerLoaderArgs` or `WorkerActionArgs`
  * types.
+ * @deprecated Use {@link WorkerLoaderFunctionArgs} and {@link WorkerActionFunctionArgs} instead. @see DataFunctionArgs.
  */
 export type WorkerDataFunctionArgs = Omit<DataFunctionArgs, 'context'> & {
   context: WorkerLoadContext;
@@ -24,11 +41,13 @@ export type WorkerDataFunctionArgs = Omit<DataFunctionArgs, 'context'> & {
 
 /**
  * The arguments passed to a worker loader function.
+ * @deprecated Use {@link WorkerLoaderFunctionArgs} instead.
  */
 export type WorkerLoaderArgs = WorkerDataFunctionArgs;
 
 /**
  * The arguments passed to a worker action function.
+ * @deprecated Use {@link WorkerActionFunctionArgs} instead.
  */
 export type WorkerActionArgs = WorkerDataFunctionArgs;
 
@@ -36,14 +55,14 @@ export type WorkerActionArgs = WorkerDataFunctionArgs;
  * A worker action function.
  */
 export interface WorkerActionFunction {
-  (args: WorkerActionArgs): ReturnType<ActionFunction>;
+  (args: WorkerActionFunctionArgs): ReturnType<ActionFunction>;
 }
 
 /**
  * A worker loader function.
  */
 export interface WorkerLoaderFunction {
-  (args: WorkerLoaderArgs): ReturnType<LoaderFunction>;
+  (args: WorkerLoaderFunctionArgs): ReturnType<LoaderFunction>;
 }
 
 export interface WorkerRouteModule extends ServerRouteModule {
@@ -69,7 +88,7 @@ export interface WorkerRouteManifest {
  *
  * This acts as a fallback when a route doesn't have a worker action or loader.
  */
-export type DefaultFetchHandler = (args: WorkerDataFunctionArgs) => Promise<Response>;
+export type DefaultFetchHandler = (args: WorkerActionFunctionArgs | WorkerLoaderFunctionArgs) => Promise<Response>;
 
 /**
  * The default error handler.
@@ -77,7 +96,7 @@ export type DefaultFetchHandler = (args: WorkerDataFunctionArgs) => Promise<Resp
  * This acts as a fallback when a worker action or loader throws an
  * unhandled error.
  */
-export type DefaultErrorHandler = (error: Error, args: WorkerDataFunctionArgs) => void;
+export type DefaultErrorHandler = (error: Error, args: WorkerActionFunctionArgs | WorkerLoaderFunctionArgs) => void;
 
 /**
  * The `getLoadContext` function used to create a globally accessible
@@ -85,11 +104,14 @@ export type DefaultErrorHandler = (error: Error, args: WorkerDataFunctionArgs) =
  */
 export type GetLoadContextFunction = (event: FetchEvent) => WorkerLoadContext;
 
-declare global {
-  interface ServiceWorkerGlobalScope {
-    __workerManifest: {
-      routes: WorkerRouteManifest;
-      assets: string[];
-    };
-  }
-}
+/**
+ * Unfornately declaring this reaking havoc on the codebase I am working on.
+ * I could be 
+// declare global {
+//   interface ServiceWorkerGlobalScope {
+//     __workerManifest: {
+//       routes: WorkerRouteManifest;
+//       assets: string[];
+//     };
+//   }
+// }
